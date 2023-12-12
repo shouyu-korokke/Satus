@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Robot_Mat
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: b40fbb83a51fb2741b3950fb23e21d70, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
