@@ -242,6 +242,7 @@ public class gameManagerScript : MonoBehaviour
     public void endTurn()
     {
         
+
         if (TMS.selectedUnit == null)
         {
             switchCurrentPlayer();
@@ -252,7 +253,7 @@ public class gameManagerScript : MonoBehaviour
             }
             else if (currentTeam == 1)
             {
-                playerPhaseAnim.SetTrigger("slideLeftTrigger");
+                playerPhaseAnim.SetTrigger("slideRightTrigger");
                 playerPhaseText.SetText("Enemy Phase");
             }
             //teamHealthbarColorUpdate();
@@ -771,14 +772,14 @@ public class gameManagerScript : MonoBehaviour
         if (team1.transform.childCount == 0)
         {
             displayWinnerUI.enabled = true;
-            displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Player 2 has won!");
+            displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("enemy has won!");
            
             
         }
         else if (team2.transform.childCount == 0)
         {
             displayWinnerUI.enabled = true;
-            displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Player 1 has won!");
+            displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Player has won!");
 
           
         }
