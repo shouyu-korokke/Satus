@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -10,12 +10,10 @@ public class UnitScript : MonoBehaviour
     public int x;
     public int y;
 
-    //This is a low tier idea, don't use it 
-    public bool coroutineRunning;
-
     //Meta defining play here
     public Queue<int> movementQueue;
     public Queue<int> combatQueue;
+
     //This global variable is used to increase the units movementSpeed when travelling on the board
     public float visualMovementSpeed = .15f;
 
@@ -87,8 +85,11 @@ public class UnitScript : MonoBehaviour
         combatQueue = new Queue<int>();
        
         
+        //Set the position of the unit
         x = (int)transform.position.x;
         y = (int)transform.position.z;
+
+        
         unitMoveState = movementStates.Unselected;
         currentHealthPoints = maxHealthPoints;
         hitPointsText.SetText(currentHealthPoints.ToString());
@@ -313,7 +314,6 @@ public class UnitScript : MonoBehaviour
 
     public void setSelectedAnimation()
     {
-        
         animator.SetTrigger("toSelected");
     }
     public void setIdleAnimation()

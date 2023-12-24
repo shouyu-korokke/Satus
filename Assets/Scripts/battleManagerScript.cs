@@ -22,37 +22,7 @@ public class battleManagerScript : MonoBehaviour
         var recipientUnit = recipient.GetComponent<UnitScript>();
         int initiatorAtt = initiatorUnit.attackDamage;
         int recipientAtt = recipientUnit.attackDamage;
-        //If the two units have the same attackRange then they can trade
-        /*if (initiatorUnit.attackRange == recipientUnit.attackRange)
-        {
-            GameObject tempParticle = Instantiate( recipientUnit.GetComponent<UnitScript>().damagedParticle,recipient.transform.position, recipient.transform.rotation);
-            Destroy(tempParticle, 2f);
-            recipientUnit.dealDamage(initiatorAtt);
-            if (checkIfDead(recipient))
-            {
-                //Set to null then remove, if the gameObject is destroyed before its removed it will not check properly
-                //This leads to the game not actually ending because the check to see if any units remains happens before the object
-                //is removed from the parent, so we need to parent to null before we destroy the gameObject.
-                recipient.transform.parent = null;
-                recipientUnit.unitDie();
-                battleStatus = false;
-                GMS.checkIfUnitsRemain(initiator, recipient);
-                return;
-            }
-
-           
-            initiatorUnit.dealDamage(recipientAtt);
-            if (checkIfDead(initiator))
-            {
-                initiator.transform.parent = null;
-                initiatorUnit.unitDie();
-                battleStatus = false;
-                GMS.checkIfUnitsRemain(initiator, recipient);
-                return;
-
-            }
-        }*/
-        //if the units don't have the same attack range, like a swordsman vs an archer; the recipient cannot strike back
+        
         if (true)
         {
             GameObject tempParticle = Instantiate(recipientUnit.GetComponent<UnitScript>().damagedParticle, recipient.transform.position, recipient.transform.rotation);
