@@ -29,4 +29,19 @@ public class progressionScript : MonoBehaviour
         }
     }
 
+    public void promote()
+    {
+        //TODO
+    }
+
+    public void modifyEnemy(UnitScript enemy)
+    {
+        //TODO
+    }
+
+    public void adapt(int combatLoss)
+    {
+        //TODO
+    }
+
 }

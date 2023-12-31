@@ -8,16 +8,11 @@ public class stageInitScript : MonoBehaviour
 {    
 
     public Character[] characters = new Character[3];
-    
+
 
     public void SetFriendlyStats()
     {
-        // Get references to all game objects with the "PlayerUnit" tag
         GameObject[] playerUnitObjects = GameObject.FindGameObjectsWithTag("PlayerUnit");
-
-
-
-        // Set the stats for each player unit
         for (int i = 0; i < playerUnitObjects.Length; i++)
         {
             UnitScript playerUnit = playerUnitObjects[i].GetComponent<UnitScript>();
@@ -28,6 +23,20 @@ public class stageInitScript : MonoBehaviour
             playerUnit.attackRange = characters[i].attack_range;
             playerUnit.currentHealthPoints = playerUnit.maxHealthPoints;
             playerUnit.Awake();
+        }
+
+    }
+
+    
+    public void SetEnemyStats()
+    {
+        GameObject[] enemyUnitObjects = GameObject.FindGameObjectsWithTag("EnemyUnit");
+        for (int i = 0; i < enemyUnitObjects.Length; i++)
+        {
+            UnitScript enemyUnit = enemyUnitObjects[i].GetComponent<UnitScript>();
+            progressionScript.instance.modifyEnemy(enemyUnit);
+            enemyUnit.currentHealthPoints = enemyUnit.maxHealthPoints;
+            enemyUnit.Awake();
         }
 
     }
