@@ -742,7 +742,7 @@ public class tileMapScript : MonoBehaviour
 
     //In:  
     //Out: void
-    //Desc: highlights the units range options (this is the portion shown in the video)
+    //Desc: highlights the units range options
     public void highlightUnitRange()
     {
        
@@ -939,12 +939,8 @@ public class tileMapScript : MonoBehaviour
                     tempNeighbourHash.Add(tn);
                 }
             }
-            neighbourHash = tempNeighbourHash;
-            tempNeighbourHash = new HashSet<Node>();
-            if (i < attRange - 1)
-            {
-                seenNodes.UnionWith(neighbourHash);
-            }
+            neighbourHash.UnionWith(tempNeighbourHash);
+            tempNeighbourHash.Clear();
         }
         neighbourHash.ExceptWith(seenNodes);
         neighbourHash.Remove(initialNode);
