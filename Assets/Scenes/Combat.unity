@@ -2807,7 +2807,7 @@ Animator:
   m_GameObject: {fileID: 753442971}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63ed875334dcae04eafd72bcdc825df3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 666df10d76b3fe74a97c95a08464abd0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4042,7 +4042,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.45946068, g: 0.49108234, b: 0.5566038, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
