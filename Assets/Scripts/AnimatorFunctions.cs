@@ -4,6 +4,7 @@ using UnityEngine;
 public class AnimatorFunctions : MonoBehaviour
 {
     [SerializeField] MenuButtonController menuButtonController;
+    //[SerializeField] selectCharacter_scroll selectCharacter_scroll;
     public bool disableOnce;
 
     void PlaySound(AudioClip whichSound)
@@ -11,6 +12,7 @@ public class AnimatorFunctions : MonoBehaviour
         if (!disableOnce)
         {
             menuButtonController.audioSource.PlayOneShot(whichSound);
+            //selectCharacter_scroll.audioSource.PlayOneShot(whichSound);
         }
         else
         {

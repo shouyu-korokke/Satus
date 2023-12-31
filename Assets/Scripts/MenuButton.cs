@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class MenuButton : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] AnimatorFunctions animatorFunctions;
     [SerializeField] int thisIndex;
+    [SerializeField] string sceneToLoad;
+    public GameObject Options;
 
     // Update is called once per frame
     void Update()
@@ -18,6 +21,13 @@ public class MenuButton : MonoBehaviour
             if (Input.GetAxis("Submit") == 1)
             {
                 animator.SetBool("pressed", true);
+                if (thisIndex == 1)
+                {
+                    SceneManager.LoadScene("CharacterList");
+                    // Options = GameObject.Find("Options");
+                    // Options.SetActive(true);
+
+                }
             }
             else if (animator.GetBool("pressed"))
             {
