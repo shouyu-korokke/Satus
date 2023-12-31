@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class Character
+public class CharacterTemp
 {
     public string name;
-        // public GameObject characterPrefab;
+        //public GameObject characterPrefab;
         //public GameObject 2Dsprite;
     public Transform characterPos;
     public int attack_range;
@@ -49,7 +49,7 @@ public class selectCharacter_scroll : MonoBehaviour
     
 
     public int currentCharacterIndex = 0;
-    public Character[] character;
+    public CharacterTemp[] character;
     // public Transform[] character;
     public Transform camera;
     public Vector3 vector;

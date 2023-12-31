@@ -9,6 +9,7 @@ public class tileMapScript : MonoBehaviour
     [Header("Manager Scripts")]
     public battleManagerScript BMS;
     public gameManagerScript GMS;
+    public stageInitScript SIS;
 
     //List of tiles that are used to generate the map
     //Try chaging tilesTypes to enum later   
@@ -94,6 +95,8 @@ public class tileMapScript : MonoBehaviour
         generateMapVisuals();
         //Check if there are any pre-existing units on the board
         setIfTileIsOccupied();
+        //Set the friendly unit stats
+        SIS.SetFriendlyStats();
 
 
     }
@@ -1113,6 +1116,7 @@ public class tileMapScript : MonoBehaviour
         }
         return false;
     }
+
 
 
 }

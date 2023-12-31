@@ -4,28 +4,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace C1
+[System.Serializable]
+public class Character
 {
-    public class Character
-    {
-        public string name;
-        // public GameObject characterPrefab;
-        //public GameObject 2Dsprite;
-        public Transform characterPos;
-        public int attack_range;
-        public int attack_damage;
-        public int max_health;
-        public int movement_range;
+    public string name = "Nameless";
+    public GameObject characterPrefab;
+    //public GameObject 2Dsprite;
+    public int attack_range = 2;
+    public int attack_damage = 4;
+    public int max_health = 15;
+    public int movement_range = 6;
 
 
-        //hidden
-        public int luck;
-        public bool extra_action;
+    //hidden
+    public int luck;
+    public bool extra_action;
 
 
-        //WIP
-        //public int armor;
-        //public 
+    //WIP
+    //public int armor;
+    //public 
 
-    }
+    
 }

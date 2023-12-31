@@ -7,8 +7,6 @@ using System.Runtime.Serialization.Formatters;
 public class gameManagerScript : MonoBehaviour
 {
    
-    //A lot of the UI does not need to be public, they just are currently if you need to make quick changes in the inspector
-    //Changing them to private will not break anything, but you will need to re-enable them to show in the inspector
     [Header("UI GameObjects")]
     public TMP_Text currentTeamUI;
     public Canvas displayWinnerUI;

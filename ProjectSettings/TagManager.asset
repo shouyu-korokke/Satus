@@ -8,6 +8,7 @@ TagManager:
   - Tile
   - UI
   - Unit
+  - PlayerUnit
   layers:
   - Default
   - TransparentFX

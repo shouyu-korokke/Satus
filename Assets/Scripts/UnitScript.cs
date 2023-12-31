@@ -77,7 +77,7 @@ public class UnitScript : MonoBehaviour
     public List<Node> pathForMovement = null;
     public bool completedMovement = false;
 
-    private void Awake()
+    public void Awake()
     {
 
         animator = holder3D.GetComponent<Animator>();
@@ -243,8 +243,6 @@ public class UnitScript : MonoBehaviour
     public IEnumerator moveOverSeconds(GameObject objectToMove,Node endNode)
     {
         movementQueue.Enqueue(1);
-
-        //remove first thing on path because, its the tile we are standing on
         
         path.RemoveAt(0);
         while (path.Count != 0)
