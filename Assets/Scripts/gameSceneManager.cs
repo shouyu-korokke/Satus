@@ -12,13 +12,19 @@ public class gameSceneManager : MonoBehaviour
     
     public void loadMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void loadLevelOne()
     {
         SceneManager.LoadScene(1);
     }
+
+     public void loadCharacterList()
+    {
+        SceneManager.LoadScene(2);
+    }
+
 
     public void loadHelpCanvas()
     {
