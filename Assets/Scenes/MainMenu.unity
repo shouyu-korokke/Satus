@@ -1821,6 +1821,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &791755068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791755070}
+  - component: {fileID: 791755069}
+  m_Layer: 0
+  m_Name: progressionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &791755069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791755068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099a620c4fa0cc64ba46ebead7a1a278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numCombat: 0
+  c1:
+    name: Nameless
+    characterPrefab: {fileID: 0}
+    attack_range: 2
+    attack_damage: 4
+    max_health: 15
+    movement_range: 6
+    luck: 0
+    extra_action: 0
+  c2:
+    name: Nameless
+    characterPrefab: {fileID: 0}
+    attack_range: 2
+    attack_damage: 4
+    max_health: 15
+    movement_range: 6
+    luck: 0
+    extra_action: 0
+  c3:
+    name: Nameless
+    characterPrefab: {fileID: 0}
+    attack_range: 2
+    attack_damage: 4
+    max_health: 15
+    movement_range: 6
+    luck: 0
+    extra_action: 0
+  generalAdaptation: 50
+  lastAdaptation: 20
+  lastcombatLoss: 0
+--- !u!4 &791755070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791755068}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 395.62033, y: 162.01523, z: -50.5372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &818925262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,3 +3717,4 @@ SceneRoots:
   - {fileID: 1211608738}
   - {fileID: 861243248}
   - {fileID: 724280257}
+  - {fileID: 791755070}
