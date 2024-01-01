@@ -96,6 +96,7 @@ public class selectCharacter_scroll : MonoBehaviour
         movement_range_txt.text = "Movement Range :   " + character[currentCharacterIndex].movement_range.ToString() + "m";
 
         // character roll.................................
+        //Transform characterPos = character[currentCharacterIndex].GetComponent<Transform>();
         transform.localRotation = Quaternion.Lerp(
             transform.localRotation, 
             Quaternion.FromToRotation(character[currentCharacterIndex].characterPos.localPosition, vector), 
