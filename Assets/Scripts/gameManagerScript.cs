@@ -70,6 +70,10 @@ public class gameManagerScript : MonoBehaviour
    
     public void Start()
     {
+        //reset for progression
+        progressionScript.instance.lastAdaptation = 0;
+        progressionScript.instance.lastcombatLoss = 0;
+
         currentTeam = 0;
         setCurrentTeamUI();
         teamHealthbarColorUpdate();
@@ -771,15 +775,16 @@ public class gameManagerScript : MonoBehaviour
         {
             displayWinnerUI.enabled = true;
             displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("enemy has won!");
-           
+            progressionScript.instance.adapt();
+           //TODO
             
         }
         else if (team2.transform.childCount == 0)
         {
             displayWinnerUI.enabled = true;
             displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Player has won!");
-
-          
+            progressionScript.instance.adapt();
+            //TODO
         }
 
 
@@ -788,14 +793,14 @@ public class gameManagerScript : MonoBehaviour
 
     //In: 
     //Out: void
-    //Desc: set the player winning
+    // //Desc: set the player winning
     
-    public void win()
-    {
-        displayWinnerUI.enabled = true;
-        displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Winner!");
+    // public void win()
+    // {
+    //     displayWinnerUI.enabled = true;
+    //     displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Winner!");
 
-    }
+    // }
 
   
    

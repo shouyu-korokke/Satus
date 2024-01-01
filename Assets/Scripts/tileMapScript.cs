@@ -97,6 +97,8 @@ public class tileMapScript : MonoBehaviour
         setIfTileIsOccupied();
         //Set the friendly unit stats
         SIS.SetFriendlyStats();
+        //Set the enemy unit stats
+        SIS.SetEnemyStats();
 
 
     }

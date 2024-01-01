@@ -47,6 +47,7 @@ public class selectCharacter_scroll : MonoBehaviour
     //     public int movement_range;
     // }
     
+    public Vector3[] characterPos = {120*Vector3.right, -120*Vector3.right, 0f*Vector3.right};
 
     public int currentCharacterIndex = 0;
     public CharacterTemp[] character;
@@ -99,7 +100,7 @@ public class selectCharacter_scroll : MonoBehaviour
         //Transform characterPos = character[currentCharacterIndex].GetComponent<Transform>();
         transform.localRotation = Quaternion.Lerp(
             transform.localRotation, 
-            Quaternion.FromToRotation(character[currentCharacterIndex].characterPos.localPosition, vector), 
+            Quaternion.FromToRotation(characterPos[currentCharacterIndex], vector), 
             0.05f);
 
     }

@@ -198,6 +198,10 @@ public class UnitScript : MonoBehaviour
     }
     public void unitDie()
     {
+        if(this.tag == "PlayerUnit")
+        {
+            progressionScript.instance.lastcombatLoss++;
+        }
         if (holder3D.activeSelf)
         {
             StartCoroutine(fadeOut());

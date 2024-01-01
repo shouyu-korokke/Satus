@@ -12,9 +12,12 @@ public class progressionScript : MonoBehaviour
     public Character c2;
     public Character c3;
 
-    public int generalAdaptation;
-    public int recentAdaptation;
+    //cap at 100
+    public int generalAdaptation = 0;
+    public int lastAdaptation = 0;
 
+    //
+    public int lastcombatLoss = 0;
 
     private void Awake()
     {
@@ -36,11 +39,14 @@ public class progressionScript : MonoBehaviour
 
     public void modifyEnemy(UnitScript enemy)
     {
+        enemy.maxHealthPoints = enemy.maxHealthPoints + generalAdaptation/20 + lastAdaptation/10 + numCombat;
+        enemy.attackDamage = enemy.attackDamage + generalAdaptation/40 + lastAdaptation/20 + numCombat/2; 
         //TODO
     }
 
-    public void adapt(int combatLoss)
+    public void adapt()
     {
+
         //TODO
     }
 
