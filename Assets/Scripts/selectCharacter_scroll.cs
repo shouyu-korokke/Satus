@@ -5,30 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class CharacterTemp
-{
-    public string name;
-        //public GameObject characterPrefab;
-        //public GameObject 2Dsprite;
-    public Transform characterPos;
-    public int attack_range;
-    public int attack_damage;
-    public int max_health;
-    public int movement_range;
-
-
-    //hidden
-    public int luck;
-    public bool extra_action;
-
-
-    //WIP
-    //public int armor;
-    //public 
-
-}
-
 public class selectCharacter_scroll : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -47,10 +23,9 @@ public class selectCharacter_scroll : MonoBehaviour
     //     public int movement_range;
     // }
     
-    public Vector3[] characterPos = {120*Vector3.right, -120*Vector3.right, 0f*Vector3.right};
-
+    public float[] rotationAngle = {120f,-120f,0f};
     public int currentCharacterIndex = 0;
-    public CharacterTemp[] character;
+    public Character[] character;
     // public Transform[] character;
     public Transform camera;
     public Vector3 vector;
@@ -99,8 +74,8 @@ public class selectCharacter_scroll : MonoBehaviour
         // character roll.................................
         //Transform characterPos = character[currentCharacterIndex].GetComponent<Transform>();
         transform.localRotation = Quaternion.Lerp(
-            transform.localRotation, 
-            Quaternion.FromToRotation(characterPos[currentCharacterIndex], vector), 
+            transform.localRotation,  
+            Quaternion.Euler(0f, rotationAngle[currentCharacterIndex], 0f),
             0.05f);
 
     }
