@@ -5,43 +5,76 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     
-    public float movementSpeed = 0.01f;
-    public float rotationSpeed = 100f;
+    private float panSpeed = 5f;
+    private float scrollScale = 1f;
+    private float sensitivity = 3f;
 
-    void FixedUpdate()
+    // Use this for initialization
+    void Start () {
+    	
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+        Vector3 pos = new Vector3(0,0,0);
+        Quaternion rot = transform.rotation;
+
+
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("Pressed left click.");
+            //While empty
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+            float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+            rot = Quaternion.Euler(rot.eulerAngles.x - mouseY, rot.eulerAngles.y + mouseX, rot.eulerAngles.z);
+
+            //Debug.Log("x:" + rot.eulerAngles.x + ";  y:" + rot.eulerAngles.y + ";  z:" + rot.eulerAngles.z);
+        }
+
+        if (Input.GetKey("w"))
+        {
+            pos.z = 0 + panSpeed * Time.deltaTime;
+        }
+        else if (Input.GetKey("s"))
+        {
+            pos.z = 0 - panSpeed * Time.deltaTime;
+        }
+
+        if (Input.GetKey("a"))
+        {
+            pos.x = 0 - panSpeed * Time.deltaTime;
+        }
+        else if (Input.GetKey("d"))
+        {
+            pos.x = 0 + panSpeed * Time.deltaTime;
+        }
+
+        pos.y = 0 - Input.mouseScrollDelta.y * scrollScale;
+
+        pos = BasisRotate(pos, rot);
+
+        transform.position += pos; 
+        transform.rotation = rot;
+        
+    }
+
+    private Vector3 BasisRotate(Vector3 posIn, Quaternion rot)
     {
-        // Horizontal movement
-        float horizontalMovement = 0f;
-        float verticalMovement = 0f;
+        Vector3 posOut = new Vector3(0, 0, 0);
 
-        if (Input.GetKey(KeyCode.W))
-            verticalMovement = 1f;
-        if (Input.GetKey(KeyCode.S))
-            verticalMovement = -1f;
-        if (Input.GetKey(KeyCode.A))
-            horizontalMovement = -1f;
-        if (Input.GetKey(KeyCode.D))
-            horizontalMovement = 1f;
+        posOut.x = posIn.z * Mathf.Sin(rot.eulerAngles.y * Mathf.PI / 180)
+                 + posIn.x * Mathf.Cos(rot.eulerAngles.y * Mathf.PI / 180);
 
-        Vector3 movement = new Vector3(horizontalMovement, 0f, verticalMovement) * movementSpeed * Time.fixedDeltaTime;
-        transform.Translate(movement, Space.Self);
+        posOut.y = posIn.y;
 
-        // Horizontal rotation
-        float horizontalRotation = 0f;
-        if (Input.GetKey(KeyCode.Q))
-            horizontalRotation = -1f;
-        if (Input.GetKey(KeyCode.E))
-            horizontalRotation = 1f;
-
-        transform.Rotate(Vector3.up, horizontalRotation * rotationSpeed * Time.fixedDeltaTime, Space.World);
-
-        // Vertical rotation
-        float verticalRotation = 0f;
-        if (Input.GetKey(KeyCode.R))
-            verticalRotation = 1f;
-        if (Input.GetKey(KeyCode.F))
-            verticalRotation = -1f;
-
-        transform.Rotate(Vector3.right, verticalRotation * rotationSpeed * Time.fixedDeltaTime, Space.Self);
+        posOut.z = posIn.z * Mathf.Cos(rot.eulerAngles.y * Mathf.PI / 180)
+                 - posIn.x * Mathf.Sin(rot.eulerAngles.y * Mathf.PI / 180);
+  
+        return posOut;
     }
 }

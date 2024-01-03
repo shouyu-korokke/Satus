@@ -32,4 +32,18 @@ public class StartGameJump : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+
+    public void loadCombat1()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void loadCombat2()
+    {
+        SceneManager.LoadScene(4);
+    }
+    public void loadCombat3()
+    {
+        SceneManager.LoadScene(5);
+    }
 }
