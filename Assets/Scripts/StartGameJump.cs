@@ -20,30 +20,49 @@ public class StartGameJump : MonoBehaviour
 
     public void Jump_0()
     {
-        SceneManager.LoadScene(0);
+        // int Scene = 0;
+        // StartCoroutine(PlaySoundAndLoadScene(Scene));
+        SceneManager.LoadScene(0); 
     }
 
     public void Jump_1()
     {
-        SceneManager.LoadScene(3);
+        // int Scene = 3;
+        // StartCoroutine(PlaySoundAndLoadScene(Scene));
+        SceneManager.LoadScene(3); 
     }
 
     public void Jump_2()
     {
-        SceneManager.LoadScene(4);
+        // int Scene = 4;
+        // StartCoroutine(PlaySoundAndLoadScene(Scene));
+        SceneManager.LoadScene(4); 
     }
 
     public void loadCombat1()
     {
-        SceneManager.LoadScene(3);
+        // int Scene = 3;
+        // StartCoroutine(PlaySoundAndLoadScene(Scene));
+        SceneManager.LoadScene(3); 
     }
 
     public void loadCombat2()
     {
-        SceneManager.LoadScene(4);
+        // int Scene = 4;
+        // StartCoroutine(PlaySoundAndLoadScene(Scene));
+        SceneManager.LoadScene(4); 
     }
     public void loadCombat3()
     {
-        SceneManager.LoadScene(5);
+        // int Scene = 5; 
+        // StartCoroutine(PlaySoundAndLoadScene(Scene));
+        SceneManager.LoadScene(5); 
     }
+
+    // IEnumerator PlaySoundAndLoadScene(int Scene)
+    // {
+       
+    //     yield return new WaitForSeconds(0.5f); 
+    //     SceneManager.LoadScene(Scene); 
+    // }
 }
