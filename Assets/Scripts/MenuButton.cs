@@ -11,8 +11,11 @@ public class MenuButton : MonoBehaviour
     [SerializeField] int thisIndex;
     [SerializeField] string sceneToLoad;
     public GameObject Options;
+    // public AudioSource whichSound;
 
     // Update is called once per frame
+
+
     void Update()
     {
         if (menuButtonController.index == thisIndex)
@@ -23,9 +26,9 @@ public class MenuButton : MonoBehaviour
                 animator.SetBool("pressed", true);
                 if (thisIndex == 1)
                 {
-                    SceneManager.LoadScene("CharacterList");
-                    // Options = GameObject.Find("Options");
-                    // Options.SetActive(true);
+
+                    StartCoroutine(PlaySoundAndLoadScene()); // 使用协程来播放音效并加载场景
+                    //SceneManager.LoadScene("CharacterList"); 
 
                 }
             }
@@ -40,4 +43,13 @@ public class MenuButton : MonoBehaviour
             animator.SetBool("selected", false);
         }
     }
+
+     IEnumerator PlaySoundAndLoadScene()
+    {
+       
+        // animatorFunctions.disableOnce = false;
+        yield return new WaitForSeconds(0.6f); // 等待音效播放完毕
+        SceneManager.LoadScene("CharacterList"); // 加载新场景
+    }
+
 }
