@@ -179,27 +179,66 @@ public class tileMapScript : MonoBehaviour
                 tiles[x, y] = 0;
             }
         }
-        if (SceneManager.GetActiveScene().name == "Combat 1")
+        if (SceneManager.GetActiveScene().name == "Combat 4")
         {
             //combat 1
-            tiles[1, 3] = 2;
-            tiles[1, 4] = 2;
-            tiles[1, 5] = 2;
-            tiles[1, 6] = 2;
-            tiles[2, 3] = 2;
-            tiles[2, 4] = 2;
-            tiles[2, 5] = 2;
-            tiles[2, 6] = 2;
-            tiles[3, 3] = 2;
-            tiles[3, 4] = 2;
-            tiles[3, 5] = 2;
-            tiles[3, 6] = 2;
-            tiles[7, 2] = 2;
+            
+            for(int i = 0;i<mapSizeY;i++)
+            {
+                tiles[0,i] = 2;
+            }
 
-            tiles[5, 8] = 2;
+            tiles[1,6] = 2;
+            tiles[1,7] = 2;
+            tiles[2,6] =2;
+            tiles[2,7] = 2;
+            tiles[3,6] = 2;
+            tiles[3,7] = 2;
+            tiles[4,6] = 2;
+            tiles[4,7] = 2;
 
-            tiles[8, 1] = 1;
-            tiles[9, 1] = 1;
+
+            tiles[1,13]=2;
+            tiles[2,13]=2;
+            tiles[3,13]=2;
+            tiles[4,13]=2;
+            tiles[5,13]=2;
+            tiles[6,13]=2;
+            tiles[7,13] = 2;
+
+            tiles[1,14]=2;
+            tiles[2,14]=2;
+            tiles[3,14]=2;
+            tiles[4,14]=2;
+            tiles[5,14]=2;
+            tiles[6,14]=2;
+            tiles[7,14] = 2;
+
+            tiles[1,15]=2;
+            tiles[2,15]=2;
+            tiles[3,15]=2;
+            tiles[4,15]=2;
+            tiles[5,15]=2;
+            tiles[6,15]=2;
+            tiles[7,15] = 2;            
+            // tiles[1, 3] = 2;
+            // tiles[1, 4] = 2;
+            // tiles[1, 5] = 2;
+            // tiles[1, 6] = 2;
+            // tiles[2, 3] = 2;
+            // tiles[2, 4] = 2;
+            // tiles[2, 5] = 2;
+            // tiles[2, 6] = 2;
+            // tiles[3, 3] = 2;
+            // tiles[3, 4] = 2;
+            // tiles[3, 5] = 2;
+            // tiles[3, 6] = 2;
+            // tiles[7, 2] = 2;
+
+            // tiles[5, 8] = 2;
+
+            // tiles[8, 1] = 1;
+            // tiles[9, 1] = 1;
         }
         else if (SceneManager.GetActiveScene().name == "Combat 2")
         {
