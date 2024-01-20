@@ -220,7 +220,170 @@ public class tileMapScript : MonoBehaviour
             tiles[4,15]=2;
             tiles[5,15]=2;
             tiles[6,15]=2;
-            tiles[7,15] = 2;            
+            tiles[7,15] = 2; 
+
+
+            tiles[1,23] = 2;
+            tiles[1,24] = 2;    
+
+            tiles[1,24] = 2;
+            tiles[1,25] = 2;
+
+            tiles[4,18] = 2;
+            tiles[4,19] = 2;
+            tiles[4,20] = 2;
+            tiles[4,21] = 2;
+            tiles[4,22] = 2;
+            tiles[4,23] = 2;
+            tiles[4,24] = 2;
+            tiles[5,18] = 2;
+            tiles[5,19] = 2;
+            tiles[5,20] = 2;
+            tiles[5,21] = 2;
+            tiles[5,22] = 2;
+            tiles[5,23] = 2;
+            tiles[5,24] = 2;
+
+            tiles[1,25] = 2;
+            tiles[1,26] = 2;
+            tiles[1,27] = 2;
+            tiles[1,28] = 2;
+            tiles[2,25] = 2;
+            tiles[2,26] = 2;
+            tiles[2,27] = 2;
+            tiles[2,28] = 2;
+
+            tiles[4,19] = 2;
+            tiles[4,20] = 2;
+            tiles[4,21] = 2;
+            tiles[4,22] = 2;
+            tiles[4,23] = 2;
+            tiles[4,24] = 2;
+            tiles[5,19] = 2;
+            tiles[5,20] = 2;
+            tiles[5,21] = 2;
+            tiles[5,22] = 2;
+            tiles[5,23] = 2;
+            tiles[5,24] = 2;
+
+            
+            tiles[4,31] = 2;
+            tiles[4,32] = 2;
+            tiles[4,33] = 2;
+            tiles[4,34] = 2;
+            // tiles[4,35] = 2;
+            tiles[5,31] = 2;
+            tiles[5,32] = 2;
+            tiles[5,33] = 2;
+            tiles[5,34] = 2;
+            // tiles[5,35] = 2;
+
+
+            tiles[4,35] = 2;
+            tiles[4,36] = 2;
+            tiles[4,37] = 2;
+            tiles[4,38] = 2;
+            tiles[4,39] = 2;
+
+            tiles[4,40] = 2;
+            tiles[4,41] = 2;
+            tiles[4,42] = 2;
+            tiles[4,43] =2;
+            tiles[4,44] = 2;
+            
+            tiles[5,40] = 2;
+            tiles[5,41] = 2;
+            tiles[5,42] = 2;
+            tiles[5,43] = 2;
+            tiles[5,44] = 2;
+            
+
+
+            tiles[6,43] = 2;
+            tiles[6,44] = 2;
+            tiles[7,43] = 2;
+            tiles[7,44] = 2;
+
+            tiles[8,41] = 2;
+            tiles[8,43] = 2;
+            tiles[8,44] = 2;
+
+            tiles[9,43] = 2;
+            tiles[9,44] = 2;
+            tiles[10,43] = 2;
+            tiles[10,44] = 2;
+            tiles[11,43] = 2;
+            tiles[11,44] = 2;
+            tiles[12,43] = 2;
+            tiles[12,44] = 2;
+
+
+            tiles[14,38] = 2;
+            tiles[14,39] = 2;
+            tiles[14,40] = 2;
+            tiles[14,41] = 2;
+            tiles[14,42] = 2;
+            tiles[14,43] = 2;
+            tiles[14,44] = 2;
+
+
+            tiles[16,34] = 2;
+            tiles[16,35] = 2;
+            tiles[16,36] = 2;
+            tiles[16,37] = 2;
+            tiles[16,38] = 2;
+            tiles[16,39] = 2;
+            tiles[16,40] = 2;
+            tiles[16,41] = 2;
+            tiles[16,42] = 2;
+            tiles[17,34] = 2;
+            tiles[17,35] = 2;
+            tiles[17,36] = 2;
+            tiles[17,37] = 2;
+            tiles[17,38] = 2;
+            tiles[17,39] = 2;
+            tiles[17,40] = 2;
+            tiles[17,41] = 2;
+            tiles[17,42] = 2;
+
+            tiles[18,34] = 2;
+            tiles[18,35] = 2;
+            tiles[18,36] = 2;
+            tiles[18,37] = 2;
+            tiles[18,38] = 2;
+
+            tiles[19,34] = 2;
+            tiles[19,35] = 2;
+            tiles[19,36] = 2;
+            tiles[19,37] = 2;
+            tiles[19,38] = 2;
+
+            tiles[21,34] = 2;
+            tiles[21,35] = 2;
+            tiles[21,36] = 2;
+            tiles[22,34] = 2;
+            tiles[22,35] = 2;
+            tiles[22,36] = 2;
+            tiles[23,34] = 2;
+            tiles[23,35] = 2;
+            tiles[23,36] = 2;
+            tiles[24,34] = 2;
+            tiles[24,35] = 2;
+            tiles[24,36] = 2;
+
+
+
+            tiles[9,5] = 2;
+
+            tiles[8,7] = 2;
+            tiles[8,8] = 2;
+            tiles[8,9] = 2;
+            tiles[8,10] = 2;
+            tiles[9,7] = 2;
+            tiles[9,8] = 2;
+            tiles[9,9] = 2;
+            tiles[9,10] = 2;
+
             // tiles[1, 3] = 2;
             // tiles[1, 4] = 2;
             // tiles[1, 5] = 2;
