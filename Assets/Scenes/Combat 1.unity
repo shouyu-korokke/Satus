@@ -572,7 +572,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 63ed875334dcae04eafd72bcdc825df3, type: 2}
+      objectReference: {fileID: 9100000, guid: bbb49e81afafc5245ab7dc28a15e3223, type: 2}
     - target: {fileID: 7840513825207781463, guid: bc021e1ff92d51d44a78c206e679568e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2841,7 +2841,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 63ed875334dcae04eafd72bcdc825df3, type: 2}
+      objectReference: {fileID: 9100000, guid: bbb49e81afafc5245ab7dc28a15e3223, type: 2}
     - target: {fileID: 7840513825207781463, guid: bc021e1ff92d51d44a78c206e679568e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3016,7 +3016,7 @@ MonoBehaviour:
   damagedParticle: {fileID: 1908652125826162151, guid: 66dc3b0b00d9ec2449372775c9528d29,
     type: 3}
   unitName: 
-  moveSpeed: 2
+  moveSpeed: 0
   attackRange: 1
   attackDamage: 1
   maxHealthPoints: 5
@@ -5063,7 +5063,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 63ed875334dcae04eafd72bcdc825df3, type: 2}
+      objectReference: {fileID: 9100000, guid: bbb49e81afafc5245ab7dc28a15e3223, type: 2}
     - target: {fileID: 7840513825207781463, guid: bc021e1ff92d51d44a78c206e679568e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5111,7 +5111,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937931750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b64083860e0f74b4b8ebf1a36bdf2daf, type: 3}
   m_Name: 

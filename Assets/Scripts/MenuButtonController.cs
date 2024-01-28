@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MenuButtonController : MonoBehaviour
 {
     public int index;
+
     [SerializeField] bool keyDown;
     [SerializeField] int maxIndex;
     public AudioSource audioSource;
@@ -51,5 +53,12 @@ public class MenuButtonController : MonoBehaviour
             keyDown = false;
         }
     }
+    // void OnPointerEnter(PointerEventData eventData)
+    // {
+    //     if (eventData.pointerEnter.gameObject == Item.gameObject)
+    //     {
+    //         index = Item.itemIndex; 
+    //     }
+    // }
 
 }

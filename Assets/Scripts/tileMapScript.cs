@@ -155,7 +155,8 @@ public class tileMapScript : MonoBehaviour
                     if (selectedUnit.GetComponent<UnitScript>().unitMoveState != selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(3))
                     {
                         //unselectedSound.Play();
-                        selectedUnit.GetComponent<UnitScript>().setIdleAnimation();
+                        // selectedUnit.GetComponent<UnitScript>().setIdleAnimation();
+                        selectedUnit.GetComponent<UnitScript>().setWaitIdleAnimation();
                         deselectUnit();
                     }
                 }
@@ -760,6 +761,8 @@ public class tileMapScript : MonoBehaviour
                             selectedUnit = tempSelectedUnit;
                             selectedUnit.GetComponent<UnitScript>().map = this;
                             selectedUnit.GetComponent<UnitScript>().setMovementState(1);
+                            selectedUnit.GetComponent<UnitScript>().setSelectedAnimation();//----------
+
                             unitSelected = true;
                             
                             highlightUnitRange();
@@ -779,6 +782,7 @@ public class tileMapScript : MonoBehaviour
                         disableHighlightUnitRange();
                         selectedUnit = tempSelectedUnit;
                         selectedUnit.GetComponent<UnitScript>().setMovementState(1);
+                        selectedUnit.GetComponent<UnitScript>().setSelectedAnimation(); //--------------
                         selectedUnit.GetComponent<UnitScript>().map = this;
                         unitSelected = true;
                        
@@ -802,6 +806,7 @@ public class tileMapScript : MonoBehaviour
 
 
         selectedUnit.GetComponent<UnitScript>().setMovementState(2);
+        selectedUnit.GetComponent<UnitScript>().setWalkingAnimation();//----------------
        
         highlightUnitAttackOptionsFromPosition();
         highlightTileUnitIsOccupying();
@@ -937,7 +942,8 @@ public class tileMapScript : MonoBehaviour
             {
             disableHighlightUnitRange();
             disableUnitUIRoute();
-            selectedUnit.GetComponent<UnitScript>().setMovementState(0);
+            selectedUnit.GetComponent<UnitScript>().setMovementState(3);//------------0
+            selectedUnit.GetComponent<UnitScript>().setWaitIdleAnimation(); //---------------
 
        
             selectedUnit = null;
@@ -961,7 +967,8 @@ public class tileMapScript : MonoBehaviour
                 selectedUnit.GetComponent<UnitScript>().y = unitSelectedPreviousY;
                 selectedUnit.GetComponent<UnitScript>().tileBeingOccupied = previousOccupiedTile;
                 selectedUnit.transform.position = tileCoordToWorldCoord(unitSelectedPreviousX, unitSelectedPreviousY);
-                selectedUnit.GetComponent<UnitScript>().setMovementState(0);
+                selectedUnit.GetComponent<UnitScript>().setMovementState(3);//-----------------0
+                selectedUnit.GetComponent<UnitScript>().setWaitIdleAnimation();
                 selectedUnit = null;
                 unitSelected = false;
             }
@@ -1276,6 +1283,7 @@ public class tileMapScript : MonoBehaviour
     {
         //selectedSound.Play();
         selectedUnit.GetComponent<UnitScript>().setMovementState(3);
+        selectedUnit.GetComponent<UnitScript>().setWaitIdleAnimation();//---------------
         disableHighlightUnitRange();
         disableUnitUIRoute();
         //If i dont have this wait for seconds the while loops get passed as the coroutine has not started from the other script

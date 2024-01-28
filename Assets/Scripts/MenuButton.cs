@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MenuButton : MonoBehaviour
 {
@@ -31,6 +32,10 @@ public class MenuButton : MonoBehaviour
                     //SceneManager.LoadScene("CharacterList"); 
 
                 }
+                if (thisIndex == 2)
+                {
+                    Application.Quit();
+                }
             }
             else if (animator.GetBool("pressed"))
             {
@@ -42,6 +47,15 @@ public class MenuButton : MonoBehaviour
         {
             animator.SetBool("selected", false);
         }
+
+        // void OnPointerClick(PointerEventData eventData)
+        // {
+        //     if (menuButtonController.index == thisIndex)
+        //     {
+        //         animator.SetBool("pressed", true);
+        //         StartCoroutine(PlaySoundAndLoadScene());
+        //     }
+        // }
     }
 
      IEnumerator PlaySoundAndLoadScene()

@@ -73,7 +73,8 @@ public class battleManagerScript : MonoBehaviour
         float elapsedTime = 0;
         Vector3 startingPos = unit.transform.position;
         Vector3 endingPos = enemy.transform.position;
-        unit.GetComponent<UnitScript>().setWalkingAnimation();
+        //unit.GetComponent<UnitScript>().setWalkingAnimation();
+        unit.GetComponent<UnitScript>().setAttackAnimation();
         while (elapsedTime < .25f)
         {
            

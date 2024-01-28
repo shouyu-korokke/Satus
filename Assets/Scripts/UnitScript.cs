@@ -26,7 +26,7 @@ public class UnitScript : MonoBehaviour
     public GameObject damagedParticle;
     //UnitStats
     public string unitName;
-    public int moveSpeed = 2;    
+    public int moveSpeed = 1;    
     public int attackRange = 1;
     public int attackDamage = 1;
     public int maxHealthPoints = 5;
@@ -93,7 +93,7 @@ public class UnitScript : MonoBehaviour
         unitMoveState = movementStates.Unselected;
         currentHealthPoints = maxHealthPoints;
         hitPointsText.SetText(currentHealthPoints.ToString());
-     
+
     }
 
     //rotate health bar to camera
@@ -110,6 +110,7 @@ public class UnitScript : MonoBehaviour
         }
         else
         {
+
             StartCoroutine(moveOverSeconds(transform.gameObject, path[path.Count - 1]));
         }
         
@@ -123,7 +124,8 @@ public class UnitScript : MonoBehaviour
         setMovementState(0);
         completedMovement = false;
         //gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
-        setIdleAnimation();
+        // setIdleAnimation();
+        setWaitIdleAnimation();
         //gameObject.GetComponentInChildren<Renderer>().material = unitMaterial;
     }
     public movementStates getMovementStateEnum(int i)
@@ -180,9 +182,10 @@ public class UnitScript : MonoBehaviour
     }
     public void wait()
     {
-
-        //gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.gray;
-        //gameObject.GetComponentInChildren<Renderer>().material = unitWaitMaterial;
+ 
+        //   setWaitIdleAnimation();
+        // gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.gray;
+        // gameObject.GetComponentInChildren<Renderer>().material = unitWaitMaterial;
     }
     public void changeHealthBarColour(int i)
     {
@@ -204,6 +207,7 @@ public class UnitScript : MonoBehaviour
         }
         if (holder3D.activeSelf)
         {
+
             StartCoroutine(fadeOut());
             StartCoroutine(checkIfRoutinesRunning());
            
@@ -246,6 +250,7 @@ public class UnitScript : MonoBehaviour
     }
     public IEnumerator moveOverSeconds(GameObject objectToMove,Node endNode)
     {
+        
         movementQueue.Enqueue(1);
         
         path.RemoveAt(0);
@@ -318,10 +323,10 @@ public class UnitScript : MonoBehaviour
     {
         animator.SetTrigger("toSelected");
     }
-    public void setIdleAnimation()
-    {        
-        animator.SetTrigger("toIdle");
-    }
+    // public void setIdleAnimation()
+    // {        
+    //     animator.SetTrigger("toIdle");
+    // }
     public void setWalkingAnimation()
     {
         animator.SetTrigger("toWalking");
