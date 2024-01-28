@@ -25,11 +25,11 @@ public class StartGameJump : MonoBehaviour
         SceneManager.LoadScene(0); 
     }
 
-    public void Jump_1()
+    public void CharacterList()
     {
         // int Scene = 3;
         // StartCoroutine(PlaySoundAndLoadScene(Scene));
-        SceneManager.LoadScene(3); 
+        SceneManager.LoadScene(1); 
     }
 
     public void Jump_2()
