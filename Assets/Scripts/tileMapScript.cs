@@ -1039,39 +1039,60 @@ public class tileMapScript : MonoBehaviour
             // tiles[4, 7] = 1;
             // tiles[5, 7] = 1;
         }
-        else if (SceneManager.GetActiveScene().name == "Combat 3")
+        else if (SceneManager.GetActiveScene().name == "Combat 1")
         {
 
-            tiles[2, 4] = 2;
-            tiles[2, 5] = 2;
-            tiles[2, 6] = 2;
+            // tiles[2, 4] = 2;
+            // tiles[2, 5] = 2;
+            // tiles[2, 6] = 2;
 
-            tiles[5, 3] = 2;
-            tiles[5, 4] = 2;
-            tiles[5, 5] = 2;
-            tiles[5, 6] = 2;
-            tiles[6, 3] = 2;
-            tiles[6, 4] = 2;
-            tiles[6, 5] = 2;
-            tiles[6, 6] = 2;
-            tiles[7, 3] = 2;
-            tiles[7, 4] = 2;
-            tiles[7, 5] = 2;
-            tiles[7, 6] = 2;
-            tiles[8, 3] = 2;
-            tiles[8, 4] = 2;
-            tiles[8, 5] = 2;
-            tiles[8, 6] = 2;
+            // tiles[5, 3] = 2;
+            // tiles[5, 4] = 2;
+            // tiles[5, 5] = 2;
+            // tiles[5, 6] = 2;
+            // tiles[6, 3] = 2;
+            // tiles[6, 4] = 2;
+            // tiles[6, 5] = 2;
+            // tiles[6, 6] = 2;
+            // tiles[7, 3] = 2;
+            // tiles[7, 4] = 2;
+            // tiles[7, 5] = 2;
+            // tiles[7, 6] = 2;
+            // tiles[8, 3] = 2;
+            // tiles[8, 4] = 2;
+            // tiles[8, 5] = 2;
+            // tiles[8, 6] = 2;
 
-            tiles[12, 3] = 2;
-            tiles[12, 4] = 2;
-            tiles[12, 5] = 2;
-            tiles[13, 3] = 2;
-            tiles[13, 4] = 2;
-            tiles[13, 5] = 2;
+            // tiles[12, 3] = 2;
+            // tiles[12, 4] = 2;
+            // tiles[12, 5] = 2;
+            // tiles[13, 3] = 2;
+            // tiles[13, 4] = 2;
+            // tiles[13, 5] = 2;
 
-            tiles[13, 8] = 1;
-            tiles[12, 8] = 1;
+            // tiles[13, 8] = 1;
+            // tiles[12, 8] = 1;
+
+    tiles[1,3] = 2;
+    tiles[1,4] = 2;
+    tiles[1,5] = 2;
+    tiles[1,6] = 2;
+    tiles[2,3] = 2;
+    tiles[2,4] = 2;
+    tiles[2,5] = 2;
+    tiles[2,6] = 2;
+    tiles[3,3] = 2;
+    tiles[3,4] = 2;
+    tiles[3,5] = 2;
+    tiles[3,6] = 2;  
+    tiles[7,2] = 2; 
+
+    tiles[5,8] = 2;
+
+    tiles[8,1] = 1;
+    tiles[9,1] = 1;
+
+
         }
 
     }
