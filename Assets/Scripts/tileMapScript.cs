@@ -194,7 +194,7 @@ public class tileMapScript : MonoBehaviour
                 tiles[x, y] = 0;
             }
         }
-        if (SceneManager.GetActiveScene().name == "Combat 1")
+        if (SceneManager.GetActiveScene().name == "Combat 4")
         {
             //combat 1
 
@@ -778,7 +778,7 @@ public class tileMapScript : MonoBehaviour
 
 
         }
-        else if (SceneManager.GetActiveScene().name == "Combat 2")
+        else if (SceneManager.GetActiveScene().name == "Combat 5")
         {
             //combat 2
 

@@ -46,17 +46,17 @@ public class StartGameJump : MonoBehaviour
         SceneManager.LoadScene("Combat 1"); 
     }
 
-    public void loadCombat2()
+    public void loadIslandCity()
     {
         // int Scene = 4;
         // StartCoroutine(PlaySoundAndLoadScene(Scene));
-        SceneManager.LoadScene(4); 
+        SceneManager.LoadScene("Combat 5"); 
     }
     public void loadNightCity()
     {
         // int Scene = 5; 
         // StartCoroutine(PlaySoundAndLoadScene(Scene));
-        SceneManager.LoadScene(5); 
+        SceneManager.LoadScene("Combat 4"); 
     }
 
     // IEnumerator PlaySoundAndLoadScene(int Scene)
