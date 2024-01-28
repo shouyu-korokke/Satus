@@ -17,7 +17,7 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 8e2637e1dc68ae54caffbda8b334ffb5
-    name: Master
+    name: BGMVolumn
   - guid: 26aa6034beca7f24cb2945459524542a
     name: Music
   - guid: bb42d8456dbab514ca374b5d306efd8b
@@ -75,8 +75,13 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 35b9374aef0b9d24c89ff283db3668b6
   m_FloatValues:
-    8e2637e1dc68ae54caffbda8b334ffb5: 0
+    8e2637e1dc68ae54caffbda8b334ffb5: 5.0772758
+    9003b092119770c47ae4ba3c28657bab: 0
     26aa6034beca7f24cb2945459524542a: 0
+    c0182b77eff13574585822f4c325133b: 0.597
+    ed806468bdf5da545b07159affe2a88c: 0
+    4cc991b8fdd11e844b296dd990973063: 0.45700002
+    ebde719a69c2c334292fcde059b4b53d: 101
   m_TransitionOverrides: {}
 --- !u!243 &243485103152924164
 AudioMixerGroupController:

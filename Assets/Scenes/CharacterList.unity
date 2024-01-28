@@ -168,7 +168,8 @@ AudioSource:
   m_GameObject: {fileID: 28334855}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 3502df8ba6bfb84418a39f12d0f2200e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -406,7 +407,8 @@ AudioSource:
   m_GameObject: {fileID: 74071954}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -991,10 +993,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1188178633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.42850402, y: 0.054}
-  m_AnchorMax: {x: 0.6751452, y: 0.14755714}
-  m_AnchoredPosition: {x: 0, y: 0.00012207031}
-  m_SizeDelta: {x: 0, y: -0.00008392334}
+  m_AnchorMin: {x: 0.3005726, y: 0.051203202}
+  m_AnchorMax: {x: 0.78064114, y: 0.14755714}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263395842
 MonoBehaviour:
@@ -1019,17 +1021,19 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 28b6d07166d6d8947a6671e5480cbf66, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Map 2
+  m_Text: 'Island City
+
+'
 --- !u!222 &263395843
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2529,7 +2533,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.19476083, g: 0.9528302, b: 0.70678365, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 1.06
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -2549,7 +2553,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1074186279}
         m_TargetAssemblyTypeName: StartGameJump, Assembly-CSharp
-        m_MethodName: loadCombat1
+        m_MethodName: loadNightCity
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3189,7 +3193,8 @@ AudioSource:
   m_GameObject: {fileID: 1106117146}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 636bf3c5ed19c834d9770dc04acef98b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3642,7 +3647,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 1.03
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -3772,7 +3777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.55345905, g: 0.9280523, b: 1, a: 1}
+  m_Color: {r: 0.17503259, g: 0.82207555, b: 0.9433962, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3792,7 +3797,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choose the map
+  m_Text: Start by choosing map
 --- !u!222 &1255765197
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4224,7 +4229,8 @@ AudioSource:
   m_GameObject: {fileID: 1318116995}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4770,7 +4776,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Map 1
+  m_Text: Night City
 --- !u!222 &1556221120
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5455,7 +5461,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1074186279}
         m_TargetAssemblyTypeName: StartGameJump, Assembly-CSharp
-        m_MethodName: loadCombat3
+        m_MethodName: loadSampleMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6150,7 +6156,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Map 3
+  m_Text: 'Sample
+
+
+'
 --- !u!222 &2049712056
 CanvasRenderer:
   m_ObjectHideFlags: 0

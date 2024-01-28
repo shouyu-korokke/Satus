@@ -39,7 +39,7 @@ public class StartGameJump : MonoBehaviour
         SceneManager.LoadScene(4); 
     }
 
-    public void loadCombat1()
+    public void loadSampleMap()
     {
         // int Scene = 3;
         // StartCoroutine(PlaySoundAndLoadScene(Scene));
@@ -52,7 +52,7 @@ public class StartGameJump : MonoBehaviour
         // StartCoroutine(PlaySoundAndLoadScene(Scene));
         SceneManager.LoadScene(4); 
     }
-    public void loadCombat3()
+    public void loadNightCity()
     {
         // int Scene = 5; 
         // StartCoroutine(PlaySoundAndLoadScene(Scene));
