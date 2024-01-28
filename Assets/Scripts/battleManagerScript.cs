@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class battleManagerScript : MonoBehaviour
@@ -25,10 +26,18 @@ public class battleManagerScript : MonoBehaviour
         
         if (true)
         {
-            GameObject tempParticle = Instantiate(recipientUnit.GetComponent<UnitScript>().damagedParticle, recipient.transform.position, recipient.transform.rotation);
-            Destroy(tempParticle, 2f);
            
-            recipientUnit.dealDamage(initiatorAtt);
+            if (Random.Range(0,100) <= initiatorUnit.baseAccuracy)
+            {
+                GameObject tempParticle = Instantiate(recipientUnit.GetComponent<UnitScript>().damagedParticle, recipient.transform.position, recipient.transform.rotation);
+                Destroy(tempParticle, 2f);
+                recipientUnit.dealDamage(initiatorAtt);
+            }
+            else
+            {
+                //miss notification
+            }
+
             if (checkIfDead(recipient))
             {
                 recipient.transform.parent = null;

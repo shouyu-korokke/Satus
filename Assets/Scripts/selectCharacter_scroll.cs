@@ -27,7 +27,7 @@ public class selectCharacter_scroll : MonoBehaviour
     public int currentCharacterIndex = 0;
     public Character[] character;
     // public Transform[] character;
-    public Transform camera;
+    public new Transform camera;
     public Vector3 vector;
 
     /// ///////////////

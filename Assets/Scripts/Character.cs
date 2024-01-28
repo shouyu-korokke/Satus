@@ -14,7 +14,8 @@ public class Character
     public int attack_damage = 4;
     public int max_health = 15;
     public int movement_range = 6;
-
+    public int armor = 0;
+    public int promotion_point = 0;
 
     //hidden
     public int luck;

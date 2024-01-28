@@ -34,6 +34,7 @@ public class progressionScript : MonoBehaviour
 
     public void promote()
     {
+        
         //TODO
     }
 
@@ -46,7 +47,11 @@ public class progressionScript : MonoBehaviour
 
     public void adapt()
     {
-
+        lastAdaptation = 20 - 50*lastcombatLoss;
+        generalAdaptation = (int)(0.6f * generalAdaptation + 0.4f * lastAdaptation) + 5*numCombat;
+        c1.promotion_point++;
+        c2.promotion_point++;
+        c3.promotion_point++;
         //TODO
     }
 

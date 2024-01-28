@@ -91,95 +91,100 @@ public class gameManagerScript : MonoBehaviour
 
     public void Update()
     {
-        //Always trying to see where the mouse is pointing
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        
+        if(currentTeam == 0)
         {
-            //Update cursorLocation and unit appearing in the topLeft
-            cursorUIUpdate();
-            unitUIUpdate();
-            //If the unit is selected we want to highlight the current path with the UI
-            if (TMS.selectedUnit != null && TMS.selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(1) == TMS.selectedUnit.GetComponent<UnitScript>().unitMoveState)
+            //Always trying to see where the mouse is pointing
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
             {
-                //Check to see if the cursor is in range, we cant show movement outside of range so there is no point if its outside
-                if (TMS.selectedUnitMoveRange.Contains(TMS.graph[cursorX, cursorY]))
+                //Update cursorLocation and unit appearing in the topLeft
+                cursorUIUpdate();
+                unitUIUpdate();
+                //If the unit is selected we want to highlight the current path with the UI
+                if (TMS.selectedUnit != null && TMS.selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(1) == TMS.selectedUnit.GetComponent<UnitScript>().unitMoveState)
                 {
-                    //Generate new path to cursor try to limit this to once per new cursor location or else its too many calculations
-                    
-
-                    
-                    if (cursorX != TMS.selectedUnit.GetComponent<UnitScript>().x || cursorY != TMS.selectedUnit.GetComponent<UnitScript>().y)
+                    //Check to see if the cursor is in range, we cant show movement outside of range so there is no point if its outside
+                    if (TMS.selectedUnitMoveRange.Contains(TMS.graph[cursorX, cursorY]))
                     {
-                        if (!unitPathExists&&TMS.selectedUnit.GetComponent<UnitScript>().movementQueue.Count==0)
+                        //Generate new path to cursor try to limit this to once per new cursor location or else its too many calculations
+
+
+
+                        if (cursorX != TMS.selectedUnit.GetComponent<UnitScript>().x || cursorY != TMS.selectedUnit.GetComponent<UnitScript>().y)
                         {
-                           
-                            unitPathToCursor = generateCursorRouteTo(cursorX, cursorY);
-                           
-                            routeToX = cursorX;
-                            routeToY = cursorY;
-
-                            if (unitPathToCursor.Count != 0)
+                            if (!unitPathExists && TMS.selectedUnit.GetComponent<UnitScript>().movementQueue.Count == 0)
                             {
-                                                                                              
-                                for(int i = 0; i < unitPathToCursor.Count; i++)
-                                {
-                                    int nodeX = unitPathToCursor[i].x;
-                                    int nodeY = unitPathToCursor[i].y;
 
-                                    if (i == 0)
+                                unitPathToCursor = generateCursorRouteTo(cursorX, cursorY);
+
+                                routeToX = cursorX;
+                                routeToY = cursorY;
+
+                                if (unitPathToCursor.Count != 0)
+                                {
+
+                                    for (int i = 0; i < unitPathToCursor.Count; i++)
                                     {
-                                        GameObject quadToUpdate = TMS.quadOnMapForUnitMovementDisplay[nodeX, nodeY];
-                                        quadToUpdate.GetComponent<Renderer>().material = UICursor;
+                                        int nodeX = unitPathToCursor[i].x;
+                                        int nodeY = unitPathToCursor[i].y;
+
+                                        if (i == 0)
+                                        {
+                                            GameObject quadToUpdate = TMS.quadOnMapForUnitMovementDisplay[nodeX, nodeY];
+                                            quadToUpdate.GetComponent<Renderer>().material = UICursor;
+                                        }
+                                        else if (i != 0 && (i + 1) != unitPathToCursor.Count)
+                                        {
+                                            //This is used to set the indicator for tiles excluding the first/last tile
+                                            setCorrectRouteWithInputAndOutput(nodeX, nodeY, i);
+                                        }
+                                        else if (i == unitPathToCursor.Count - 1)
+                                        {
+                                            //This is used to set the indicator for the final tile;
+                                            setCorrectRouteFinalTile(nodeX, nodeY, i);
+                                        }
+
+                                        TMS.quadOnMapForUnitMovementDisplay[nodeX, nodeY].GetComponent<Renderer>().enabled = true;
+
                                     }
-                                    else if (i!=0 && (i+1)!=unitPathToCursor.Count)
-                                    {
-                                        //This is used to set the indicator for tiles excluding the first/last tile
-                                        setCorrectRouteWithInputAndOutput(nodeX, nodeY,i);
-                                    }
-                                    else if (i == unitPathToCursor.Count-1)
-                                    {
-                                        //This is used to set the indicator for the final tile;
-                                        setCorrectRouteFinalTile(nodeX, nodeY, i);
-                                    }
-                                    
-                                    TMS.quadOnMapForUnitMovementDisplay[nodeX, nodeY].GetComponent<Renderer>().enabled = true;
-                                   
+
                                 }
-                                    
+                                unitPathExists = true;
+
                             }
-                            unitPathExists = true;
-                          
+
+                            else if (routeToX != cursorX || routeToY != cursorY)
+                            {
+
+                                if (unitPathToCursor.Count != 0)
+                                {
+                                    for (int i = 0; i < unitPathToCursor.Count; i++)
+                                    {
+                                        int nodeX = unitPathToCursor[i].x;
+                                        int nodeY = unitPathToCursor[i].y;
+
+                                        TMS.quadOnMapForUnitMovementDisplay[nodeX, nodeY].GetComponent<Renderer>().enabled = false;
+                                    }
+                                }
+
+                                unitPathExists = false;
+                            }
                         }
-                        
-                        else if (routeToX != cursorX || routeToY != cursorY)
+                        else if (cursorX == TMS.selectedUnit.GetComponent<UnitScript>().x && cursorY == TMS.selectedUnit.GetComponent<UnitScript>().y)
                         {
-                           
-                            if (unitPathToCursor.Count != 0)
-                            {
-                                for (int i = 0; i < unitPathToCursor.Count; i++)
-                                {
-                                    int nodeX = unitPathToCursor[i].x;
-                                    int nodeY = unitPathToCursor[i].y;
 
-                                    TMS.quadOnMapForUnitMovementDisplay[nodeX, nodeY].GetComponent<Renderer>().enabled = false;
-                                }
-                            }
-                            
+                            TMS.disableUnitUIRoute();
                             unitPathExists = false;
                         }
+
                     }
-                    else if(cursorX == TMS.selectedUnit.GetComponent<UnitScript>().x && cursorY == TMS.selectedUnit.GetComponent<UnitScript>().y)
-                    {
-                        
-                        TMS.disableUnitUIRoute();
-                        unitPathExists = false;
-                    }
-                    
-                }               
+                }
+
             }
-        
+
         }
-        
+
     }
     //In: 
     //Out: void
@@ -791,16 +796,6 @@ public class gameManagerScript : MonoBehaviour
     }
 
 
-    //In: 
-    //Out: void
-    // //Desc: set the player winning
-    
-    // public void win()
-    // {
-    //     displayWinnerUI.enabled = true;
-    //     displayWinnerUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Winner!");
-
-    // }
 
   
    

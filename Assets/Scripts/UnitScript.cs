@@ -31,6 +31,8 @@ public class UnitScript : MonoBehaviour
     public int attackDamage = 1;
     public int maxHealthPoints = 5;
     public int currentHealthPoints;
+    public int armor = 0;
+    public int baseAccuracy = 80;
     public Sprite unitSprite;
 
     [Header("UI Elements")]
@@ -177,7 +179,14 @@ public class UnitScript : MonoBehaviour
     }
     public void dealDamage(int x)
     {
-        currentHealthPoints = currentHealthPoints - x;
+        if (x - armor > 0)
+        {
+            currentHealthPoints = currentHealthPoints - (x - armor);
+        }
+        else
+        {
+            currentHealthPoints = currentHealthPoints - 1;
+        }
         updateHealthUI();
     }
     public void wait()

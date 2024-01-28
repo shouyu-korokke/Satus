@@ -21,6 +21,7 @@ public class stageInitScript : MonoBehaviour
             playerUnit.maxHealthPoints = characters[i].max_health;
             playerUnit.moveSpeed = characters[i].movement_range;
             playerUnit.attackRange = characters[i].attack_range;
+            playerUnit.armor = characters[i].armor;
             playerUnit.currentHealthPoints = playerUnit.maxHealthPoints;
             playerUnit.Awake();
         }

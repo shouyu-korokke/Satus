@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class tileMapScript : MonoBehaviour    
@@ -82,6 +84,12 @@ public class tileMapScript : MonoBehaviour
     public Material greenUIMat;
     public Material redUIMat;
     public Material blueUIMat;
+
+
+    [Header("EnemyAction")]
+    private bool ExecutingEnemyAI = false;
+
+
     private void Start()
     {
         //Get the battlemanager running
@@ -105,71 +113,76 @@ public class tileMapScript : MonoBehaviour
 
     private void Update()
     {
-
-        //If input is left mouse down then select the unit
-        if (Input.GetMouseButtonDown(0))
+        if(GMS.currentTeam == 1 && !ExecutingEnemyAI){
+            StartCoroutine(EnemyAction());
+        }
+        else if (GMS.currentTeam == 0)
         {
-            if (selectedUnit == null)
+            //If input is left mouse down then select the unit
+            if (Input.GetMouseButtonDown(0))
             {
-                //mouseClickToSelectUnit();
-                mouseClickToSelectUnit();
-
-            }
-            //After a unit has been selected then if we get a mouse click, we need to check if the unit has entered the selection state (1) 'Selected'
-            //Move the unit
-            else if (selectedUnit.GetComponent<UnitScript>().unitMoveState == selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(1) && selectedUnit.GetComponent<UnitScript>().movementQueue.Count == 0)
-            {
-
-               
-                if ( selectTileToMoveTo())
+                if (selectedUnit == null)
                 {
-                    //selectedSound.Play();
-                    Debug.Log("movement path has been located");
-                    unitSelectedPreviousX = selectedUnit.GetComponent<UnitScript>().x;
-                    unitSelectedPreviousY = selectedUnit.GetComponent<UnitScript>().y;
-                    previousOccupiedTile = selectedUnit.GetComponent<UnitScript>().tileBeingOccupied;
-                    selectedUnit.GetComponent<UnitScript>().setWalkingAnimation();
-                    moveUnit();
-                    
-                    StartCoroutine(moveUnitAndFinalize());
-                    //The moveUnit function calls a function on the unitScriptm when the movement is completed the finalization is called from that script.
-                    
-                    
+                    //mouseClickToSelectUnit();
+                    mouseClickToSelectUnit();
+
+                }
+                //After a unit has been selected then if we get a mouse click, we need to check if the unit has entered the selection state (1) 'Selected'
+                //Move the unit
+                else if (selectedUnit.GetComponent<UnitScript>().unitMoveState == selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(1) && selectedUnit.GetComponent<UnitScript>().movementQueue.Count == 0)
+                {
+
+
+                    if (selectTileToMoveTo())
+                    {
+                        //selectedSound.Play();
+                        Debug.Log("movement path has been located");
+                        unitSelectedPreviousX = selectedUnit.GetComponent<UnitScript>().x;
+                        unitSelectedPreviousY = selectedUnit.GetComponent<UnitScript>().y;
+                        previousOccupiedTile = selectedUnit.GetComponent<UnitScript>().tileBeingOccupied;
+                        selectedUnit.GetComponent<UnitScript>().setWalkingAnimation();
+                        moveUnit();
+
+                        StartCoroutine(moveUnitAndFinalize());
+                        //The moveUnit function calls a function on the unitScriptm when the movement is completed the finalization is called from that script.
+
+
+                    }
+
+                }
+                //Finalize the movement
+                else if (selectedUnit.GetComponent<UnitScript>().unitMoveState == selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(2))
+                {
+                    finalizeOption();
                 }
 
             }
-            //Finalize the movement
-            else if(selectedUnit.GetComponent<UnitScript>().unitMoveState == selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(2))
+            //Unselect unit with the right click
+            if (Input.GetMouseButtonDown(1))
             {
-                finalizeOption();
-            }
-            
-        }
-        //Unselect unit with the right click
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (selectedUnit != null)
-            {
-                if (selectedUnit.GetComponent<UnitScript>().movementQueue.Count == 0 && selectedUnit.GetComponent<UnitScript>().combatQueue.Count==0)
+                if (selectedUnit != null)
                 {
-                    if (selectedUnit.GetComponent<UnitScript>().unitMoveState != selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(3))
+                    if (selectedUnit.GetComponent<UnitScript>().movementQueue.Count == 0 && selectedUnit.GetComponent<UnitScript>().combatQueue.Count == 0)
                     {
-                        //unselectedSound.Play();
-                        // selectedUnit.GetComponent<UnitScript>().setIdleAnimation();
-                        selectedUnit.GetComponent<UnitScript>().setWaitIdleAnimation();
-                        deselectUnit();
+                        if (selectedUnit.GetComponent<UnitScript>().unitMoveState != selectedUnit.GetComponent<UnitScript>().getMovementStateEnum(3))
+                        {
+                            //unselectedSound.Play();
+                            //selectedUnit.GetComponent<UnitScript>().setIdleAnimation();
+                            deselectUnit();
+                        }
+                    }
+                    else if (selectedUnit.GetComponent<UnitScript>().movementQueue.Count == 1)
+                    {
+                        selectedUnit.GetComponent<UnitScript>().visualMovementSpeed = 0.5f;
                     }
                 }
-                else if (selectedUnit.GetComponent<UnitScript>().movementQueue.Count == 1)
-                {
-                    selectedUnit.GetComponent<UnitScript>().visualMovementSpeed = 0.5f;
-                }
             }
+
+
         }
-       
-        
+
     }
-    
+
     public void generateMapInfo()
     {
         tiles = new int[mapSizeX, mapSizeY];
@@ -709,7 +722,6 @@ public class tileMapScript : MonoBehaviour
         return dist;
     }
 
-    //change this when we add movement types
     //In:  tile's x and y position
     //Out: true or false if the unit can enter the tile that was entered
     //Desc: if the tile is not occupied by another team's unit, then you can walk through and if the tile is walkable 
@@ -717,7 +729,7 @@ public class tileMapScript : MonoBehaviour
     {
         if (tilesOnMap[x, y].GetComponent<ClickableTileScript>().unitOnTile != null)
         {
-            if (tilesOnMap[x, y].GetComponent<ClickableTileScript>().unitOnTile.GetComponent<UnitScript>().teamNum != selectedUnit.GetComponent<UnitScript>().teamNum)
+            if (tilesOnMap[x, y].GetComponent<ClickableTileScript>().unitOnTile.GetComponent<UnitScript>().teamNum != GMS.currentTeam)
             {
                 return false;
             }
@@ -725,7 +737,26 @@ public class tileMapScript : MonoBehaviour
         return tileTypes[tiles[x, y]].isWalkable;
     }
 
-    
+
+    //In: tile's x and y position
+    //Out: cost that is requiredd to enter the tile (ignore the occupant)
+    //Desc: checks the cost of the tile for a unit to enter
+    public float costToEnterTileIgnoreOccupant(int x, int y)
+    {
+
+        if (tileTypes[tiles[x, y]].isWalkable == false)
+        {
+            return Mathf.Infinity;
+
+        }
+
+        //Gotta do the math here
+        Tile t = tileTypes[tiles[x, y]];
+        float dist = t.movementCost;
+
+        return dist;
+    }
+
     //In:  
     //Out: void
     //Desc: uses a raycast to see where the mouse is pointing, this is used to select units
@@ -849,25 +880,56 @@ public class tileMapScript : MonoBehaviour
     //Desc: finalizes the player's option, wait or attack
     public void finalizeOption()
     {
-    
-    RaycastHit hit;
-    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    HashSet<Node> attackableTiles = getUnitAttackOptionsFromPosition();
 
-    if (Physics.Raycast(ray, out hit))
-    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        HashSet<Node> attackableTiles = getUnitAttackOptionsFromPosition();
 
-        //This portion is to ensure that the tile has been clicked
-        //If the tile has been clicked then we need to check if there is a unit on it
-        if (hit.transform.gameObject.CompareTag("Tile"))
+        if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.GetComponent<ClickableTileScript>().unitOnTile != null)
-            {
-                GameObject unitOnTile = hit.transform.GetComponent<ClickableTileScript>().unitOnTile;
-                int unitX = unitOnTile.GetComponent<UnitScript>().x;
-                int unitY = unitOnTile.GetComponent<UnitScript>().y;
 
-                if (unitOnTile == selectedUnit)
+            //This portion is to ensure that the tile has been clicked
+            //If the tile has been clicked then we need to check if there is a unit on it
+            if (hit.transform.gameObject.CompareTag("Tile"))
+            {
+                if (hit.transform.GetComponent<ClickableTileScript>().unitOnTile != null)
+                {
+                    GameObject unitOnTile = hit.transform.GetComponent<ClickableTileScript>().unitOnTile;
+                    int unitX = unitOnTile.GetComponent<UnitScript>().x;
+                    int unitY = unitOnTile.GetComponent<UnitScript>().y;
+
+                    if (unitOnTile == selectedUnit)
+                    {
+                        disableHighlightUnitRange();
+                        Debug.Log("ITS THE SAME UNIT JUST WAIT");
+                        selectedUnit.GetComponent<UnitScript>().wait();
+                        selectedUnit.GetComponent<UnitScript>().setWaitIdleAnimation();
+                        selectedUnit.GetComponent<UnitScript>().setMovementState(3);
+                        deselectUnit();
+
+
+                    }
+                    else if (unitOnTile.GetComponent<UnitScript>().teamNum != selectedUnit.GetComponent<UnitScript>().teamNum && attackableTiles.Contains(graph[unitX, unitY]))
+                    {
+                        if (unitOnTile.GetComponent<UnitScript>().currentHealthPoints > 0)
+                        {
+                            Debug.Log("We clicked an enemy that should be attacked");
+                            Debug.Log(selectedUnit.GetComponent<UnitScript>().currentHealthPoints);
+                            StartCoroutine(BMS.attack(selectedUnit, unitOnTile));
+
+
+                            StartCoroutine(deselectAfterMovements(selectedUnit, unitOnTile));
+                        }
+                    }
+                }
+            }
+            else if (hit.transform.parent != null && hit.transform.parent.gameObject.CompareTag("Unit"))
+            {
+                GameObject unitClicked = hit.transform.parent.gameObject;
+                int unitX = unitClicked.GetComponent<UnitScript>().x;
+                int unitY = unitClicked.GetComponent<UnitScript>().y;
+
+                if (unitClicked == selectedUnit)
                 {
                     disableHighlightUnitRange();
                     Debug.Log("ITS THE SAME UNIT JUST WAIT");
@@ -876,43 +938,12 @@ public class tileMapScript : MonoBehaviour
                     selectedUnit.GetComponent<UnitScript>().setMovementState(3);
                     deselectUnit();
 
-
-                    }
-                    else if (unitOnTile.GetComponent<UnitScript>().teamNum != selectedUnit.GetComponent<UnitScript>().teamNum && attackableTiles.Contains(graph[unitX,unitY]))
+                }
+                else if (unitClicked.GetComponent<UnitScript>().teamNum != selectedUnit.GetComponent<UnitScript>().teamNum && attackableTiles.Contains(graph[unitX, unitY]))
                 {
-                        if (unitOnTile.GetComponent<UnitScript>().currentHealthPoints > 0)
-                        {
-                            Debug.Log("We clicked an enemy that should be attacked");
-                            Debug.Log(selectedUnit.GetComponent<UnitScript>().currentHealthPoints);
-                            StartCoroutine(BMS.attack(selectedUnit, unitOnTile));
-
-                            
-                            StartCoroutine(deselectAfterMovements(selectedUnit, unitOnTile));
-                        }
-                }                                     
-            }
-        }
-        else if (hit.transform.parent != null && hit.transform.parent.gameObject.CompareTag("Unit"))
-        {
-            GameObject unitClicked = hit.transform.parent.gameObject;
-            int unitX = unitClicked.GetComponent<UnitScript>().x;
-            int unitY = unitClicked.GetComponent<UnitScript>().y;
-
-            if (unitClicked == selectedUnit)
-            {
-                disableHighlightUnitRange();
-                Debug.Log("ITS THE SAME UNIT JUST WAIT");
-                selectedUnit.GetComponent<UnitScript>().wait();
-                selectedUnit.GetComponent<UnitScript>().setWaitIdleAnimation();
-                selectedUnit.GetComponent<UnitScript>().setMovementState(3);
-                deselectUnit();
-
-            }
-            else if (unitClicked.GetComponent<UnitScript>().teamNum != selectedUnit.GetComponent<UnitScript>().teamNum && attackableTiles.Contains(graph[unitX, unitY]))
-            {
                     if (unitClicked.GetComponent<UnitScript>().currentHealthPoints > 0)
                     {
-                        
+
                         Debug.Log("We clicked an enemy that should be attacked");
                         Debug.Log("Add Code to Attack enemy");
                         //selectedUnit.GetComponent<UnitScript>().setAttackAnimation();
@@ -923,12 +954,12 @@ public class tileMapScript : MonoBehaviour
                         //GMS.checkIfUnitsRemain();
                         StartCoroutine(deselectAfterMovements(selectedUnit, unitClicked));
                     }
-            }
+                }
 
+            }
         }
+
     }
-    
-}
 
     //In:  
     //Out: void
@@ -1350,6 +1381,181 @@ public class tileMapScript : MonoBehaviour
         return false;
     }
 
+    //In: enemy unit
+    //Out: HashSet of attackable tiles for the enemy unit
+    //Desc:
+    public HashSet<Node> getAttackableTilesForEnemy(GameObject unit){
+        
+        float[,] cost = new float[mapSizeX, mapSizeY];
+        int attackrange = unit.GetComponent<UnitScript>().attackRange;
+        int moverange = unit.GetComponent<UnitScript>().moveSpeed;
+        Node unitInitialNode = graph[unit.GetComponent<UnitScript>().x, unit.GetComponent<UnitScript>().y];
+        HashSet<Node> totalAttackableTiles = new HashSet<Node>();
+        HashSet<Node> initialNeighbours = new HashSet<Node>();
+        HashSet<Node> tempReachableNeighbours = new HashSet<Node>();
+
+        foreach (Node n in unitInitialNode.neighbours)
+        {
+            initialNeighbours.Add(n);
+        }
+
+        totalAttackableTiles.UnionWith(initialNeighbours);
+
+        while (initialNeighbours.Count != 0)
+        {
+            foreach (Node n in initialNeighbours)
+            {
+                foreach (Node neighbour in n.neighbours)
+                {
+                    if (!totalAttackableTiles.Contains(neighbour))
+                    {
+                        
+                        cost[neighbour.x, neighbour.y] = costToEnterTileIgnoreOccupant(neighbour.x, neighbour.y) + cost[n.x, n.y];
+
+                        if (moverange + attackrange - cost[neighbour.x, neighbour.y] >= 0)
+                        {
+                            tempReachableNeighbours.Add(neighbour);
+                        }
+                    }
+                }
+
+            }
+
+            initialNeighbours = tempReachableNeighbours;
+            totalAttackableTiles.UnionWith(initialNeighbours);
+            tempReachableNeighbours = new HashSet<Node>();
+           
+        }
 
 
+        return totalAttackableTiles;
+    }
+
+    //In: player unit and enemy unit
+    //Out: player unit's empty neighbour that is in the attackable tiles of the enemy unit
+    //Desc:
+    public Node getAnyEmptyNeighbour(GameObject playerUnit, GameObject enemyUnit){
+
+        //TODO: ranged version
+        HashSet<Node> attackableTiles = getAttackableTilesForEnemy(enemyUnit);
+        foreach (Node n in graph[playerUnit.GetComponent<UnitScript>().x, playerUnit.GetComponent<UnitScript>().y].neighbours){
+            int tiletype = tiles[n.x, n.y];
+            if (tileTypes[tiletype].isWalkable == true && 
+                attackableTiles.Contains(n) && 
+                tilesOnMap[n.x, n.y].GetComponent<ClickableTileScript>().unitOnTile == null){
+                    return n;
+            }
+            
+        }
+        return null;
+    }
+    public void enemyAction()
+    {
+        if (ExecutingEnemyAI)
+        {
+            return;
+        }
+        Debug.Log("Enemy Action");
+        ExecutingEnemyAI = true;
+        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("EnemyUnit"))
+        {
+
+            GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+            if (unit.GetComponent<UnitScript>().currentHealthPoints > 0)
+            {
+                //select unit
+                selectedUnit = unit;
+                selectedUnit.GetComponent<UnitScript>().map = this;
+                selectedUnit.GetComponent<UnitScript>().setMovementState(1);
+                unitSelected = true;
+
+                //move unit
+                previousOccupiedTile = selectedUnit.GetComponent<UnitScript>().tileBeingOccupied;
+                selectedUnit.GetComponent<UnitScript>().setWalkingAnimation();
+                HashSet<Node> reachableTiles = getAttackableTilesForEnemy(unit);
+                foreach (GameObject playerUnit in playerUnits)
+                {
+                    Debug.Log(playerUnit.GetComponent<UnitScript>().x + ", " + playerUnit.GetComponent<UnitScript>().y);
+                    if (reachableTiles.Contains(graph[playerUnit.GetComponent<UnitScript>().x, playerUnit.GetComponent<UnitScript>().y]))
+                    {
+                        Debug.Log("valid target");
+                        if (getAnyEmptyNeighbour(playerUnit, unit) != null)
+                        {
+                            Debug.Log("valid tile");
+                            Node dest = getAnyEmptyNeighbour(playerUnit, unit);
+                            generatePathTo(dest.x, dest.y);
+                            Debug.Log(dest.x + ", " + dest.y);
+                            Debug.Log("path count" + unit.GetComponent<UnitScript>().path.Count);
+                            moveUnit();
+                            StartCoroutine(moveUnitAndFinalize());
+
+                            StartCoroutine(BMS.attack(unit, playerUnit));
+                            StartCoroutine(deselectAfterMovements(unit, playerUnit));
+
+                            break;
+                        }
+                    }
+                    //TODO: walk to the general direction of player units if no player units in range
+                }
+                deselectUnit();
+            }
+        }
+        GMS.endTurn();
+        ExecutingEnemyAI = false;
+    }
+    public IEnumerator EnemyAction()
+    {
+        if (ExecutingEnemyAI)
+        {
+            yield break; // Exiting the coroutine if enemy AI is already executing
+        }
+
+        Debug.Log("Enemy Action");
+        ExecutingEnemyAI = true;
+
+        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("EnemyUnit"))
+        {
+            GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+            if (unit.GetComponent<UnitScript>().currentHealthPoints > 0)
+            {
+                //select unit
+                selectedUnit = unit;
+                selectedUnit.GetComponent<UnitScript>().map = this;
+                selectedUnit.GetComponent<UnitScript>().setMovementState(1);
+                unitSelected = true;
+
+                //move unit
+                previousOccupiedTile = selectedUnit.GetComponent<UnitScript>().tileBeingOccupied;
+                selectedUnit.GetComponent<UnitScript>().setWalkingAnimation();
+                HashSet<Node> reachableTiles = getAttackableTilesForEnemy(unit);
+                foreach (GameObject playerUnit in playerUnits)
+                {
+                    if (playerUnit.GetComponent<UnitScript>().currentHealthPoints > 0)
+                    {
+
+                        if (reachableTiles.Contains(graph[playerUnit.GetComponent<UnitScript>().x, playerUnit.GetComponent<UnitScript>().y]))
+                        {
+                            if (getAnyEmptyNeighbour(playerUnit, unit) != null)
+                            {
+                                Node dest = getAnyEmptyNeighbour(playerUnit, unit);
+                                generatePathTo(dest.x, dest.y);
+                                moveUnit();
+                                yield return StartCoroutine(moveUnitAndFinalize());
+
+                                yield return StartCoroutine(BMS.attack(unit, playerUnit));
+                                yield return StartCoroutine(deselectAfterMovements(unit, playerUnit));
+
+                                break;
+                            }
+                        }
+                    }
+                    //TODO: walk to the general direction of player units if no player units in range
+                }
+                deselectUnit();
+            }
+        }
+
+        GMS.endTurn();
+        ExecutingEnemyAI = false;
+    }
 }
