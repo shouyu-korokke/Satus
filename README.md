@@ -1,1 +1,1 @@
-# YCOM2
+Thesis Project
