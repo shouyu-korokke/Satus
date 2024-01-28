@@ -19,6 +19,6 @@ public class MenuButtonClick : MonoBehaviour
 
     public void Jump()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("CharacterList");
     }
 }

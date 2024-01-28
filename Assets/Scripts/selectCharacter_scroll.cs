@@ -64,12 +64,22 @@ public class selectCharacter_scroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Character[] characters = new Character[3];
+
+        characters = getCharacterforStats();
         //showing...............................
-        name_txt.text = "Name :   "+ character[currentCharacterIndex].name.ToString();
-        attack_range_txt.text = "Attack Range :  " + character[currentCharacterIndex].attack_range.ToString() + "m";
-        attack_damage_txt.text = "Attack Damage :   " + character[currentCharacterIndex].attack_damage.ToString();
-        max_health_txt.text = "Max Health :   " + character[currentCharacterIndex].max_health.ToString() + "hp";
-        movement_range_txt.text = "Movement Range :   " + character[currentCharacterIndex].movement_range.ToString() + "m";
+        // name_txt.text = "Name :   "+ character[currentCharacterIndex].name.ToString();
+        // attack_range_txt.text = "Attack Range :  " + character[currentCharacterIndex].attack_range.ToString() + "m";
+        // attack_damage_txt.text = "Attack Damage :   " + character[currentCharacterIndex].attack_damage.ToString();
+        // max_health_txt.text = "Max Health :   " + character[currentCharacterIndex].max_health.ToString() + "hp";
+        // movement_range_txt.text = "Movement Range :   " + character[currentCharacterIndex].movement_range.ToString() + "m";
+
+        name_txt.text = "Name :   "+ characters[currentCharacterIndex].name.ToString();
+        attack_range_txt.text = "Attack Range :  " + characters[currentCharacterIndex].attack_range.ToString() + "m";
+        attack_damage_txt.text = "Attack Damage :   " + characters[currentCharacterIndex].attack_damage.ToString();
+        max_health_txt.text = "Max Health :   " + characters[currentCharacterIndex].max_health.ToString() + "hp";
+        movement_range_txt.text = "Movement Range :   " + characters[currentCharacterIndex].movement_range.ToString() + "m";
+
 
         // character roll.................................
         //Transform characterPos = character[currentCharacterIndex].GetComponent<Transform>();
@@ -78,5 +88,15 @@ public class selectCharacter_scroll : MonoBehaviour
             Quaternion.Euler(0f, rotationAngle[currentCharacterIndex], 0f),
             0.05f);
 
+    }
+
+    private Character[] getCharacterforStats()
+    {
+        Character[] result = new Character[3];
+        result[0] = progressionScript.instance.c1;
+        result[1] = progressionScript.instance.c2;
+        result[2] = progressionScript.instance.c3;
+
+        return result;
     }
 }

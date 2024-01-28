@@ -43,7 +43,7 @@ public class StartGameJump : MonoBehaviour
     {
         // int Scene = 3;
         // StartCoroutine(PlaySoundAndLoadScene(Scene));
-        SceneManager.LoadScene(3); 
+        SceneManager.LoadScene("Combat 1"); 
     }
 
     public void loadCombat2()

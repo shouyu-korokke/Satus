@@ -40,6 +40,7 @@ public class UnitScript : MonoBehaviour
     public Canvas healthBarCanvas;
     public TMP_Text hitPointsText;
     public Image healthBar;
+    public TMP_Text armorText;
 
     public Canvas damagePopupCanvas;
     public TMP_Text damagePopupText;
@@ -95,6 +96,7 @@ public class UnitScript : MonoBehaviour
         unitMoveState = movementStates.Unselected;
         currentHealthPoints = maxHealthPoints;
         hitPointsText.SetText(currentHealthPoints.ToString());
+        armorText.SetText(armor.ToString());
 
     }
 
@@ -239,19 +241,8 @@ public class UnitScript : MonoBehaviour
     {
 
         combatQueue.Enqueue(1);
-        //setDieAnimation();
-        //yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        /*
-        Renderer rend = GetComponentInChildren<SpriteRenderer>();
-        
-        for (float f = 1f; f >= .05; f -= 0.01f)
-        {
-            Color c = rend.material.color;
-            c.a = f;
-            rend.material.color = c;
-            yield return new WaitForEndOfFrame();
-        }
-        */
+        setDieAnimation();
+
         combatQueue.Dequeue();
         yield return new WaitForEndOfFrame();
        

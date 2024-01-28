@@ -123,8 +123,9 @@ public class tileMapScript : MonoBehaviour
             {
                 if (selectedUnit == null)
                 {
-                    //mouseClickToSelectUnit();
+                    
                     mouseClickToSelectUnit();
+                    
 
                 }
                 //After a unit has been selected then if we get a mouse click, we need to check if the unit has entered the selection state (1) 'Selected'
@@ -792,7 +793,7 @@ public class tileMapScript : MonoBehaviour
                             selectedUnit = tempSelectedUnit;
                             selectedUnit.GetComponent<UnitScript>().map = this;
                             selectedUnit.GetComponent<UnitScript>().setMovementState(1);
-                            selectedUnit.GetComponent<UnitScript>().setSelectedAnimation();//----------
+                            selectedUnit.GetComponent<UnitScript>().setSelectedAnimation(); //--------------
 
                             unitSelected = true;
                             
@@ -837,7 +838,7 @@ public class tileMapScript : MonoBehaviour
 
 
         selectedUnit.GetComponent<UnitScript>().setMovementState(2);
-        selectedUnit.GetComponent<UnitScript>().setWalkingAnimation();//----------------
+
        
         highlightUnitAttackOptionsFromPosition();
         highlightTileUnitIsOccupying();

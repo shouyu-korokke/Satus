@@ -35,7 +35,7 @@ public class battleManagerScript : MonoBehaviour
             }
             else
             {
-                //miss notification
+                //miss notification //---------------------------------
             }
 
             if (checkIfDead(recipient))
