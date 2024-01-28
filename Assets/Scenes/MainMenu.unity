@@ -257,7 +257,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 43dd300100622af4dbcc37bfcd018e4d, type: 3}
-    m_FontSize: 200
+    m_FontSize: 100
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -796,8 +796,7 @@ AudioSource:
   m_GameObject: {fileID: 158548978}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1108,10 +1107,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 28b6d07166d6d8947a6671e5480cbf66, type: 3}
-    m_FontSize: 100
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1119,12 +1118,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'This game is .......
+  m_Text: '1. Left click on a unit to select.
 
-    The player will cotroll....
+    2. Left click on an empty tile
+    to move the unit.
 
-    Using keyboard
-    and mouse to......'
+    3. Click the ''end turn'' button to end your turn.
+
+    4.
+    Win by defeating all enemy units.
+
+
+
+'
 --- !u!222 &210947208
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1554,8 +1560,7 @@ AudioSource:
   m_GameObject: {fileID: 447867718}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2045,8 +2050,7 @@ AudioSource:
   m_GameObject: {fileID: 724280255}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 636bf3c5ed19c834d9770dc04acef98b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2279,6 +2283,8 @@ MonoBehaviour:
     attack_damage: 4
     max_health: 15
     movement_range: 6
+    armor: 0
+    promotion_point: 0
     luck: 0
     extra_action: 0
   c2:
@@ -2288,6 +2294,8 @@ MonoBehaviour:
     attack_damage: 4
     max_health: 15
     movement_range: 6
+    armor: 0
+    promotion_point: 0
     luck: 0
     extra_action: 0
   c3:
@@ -2297,6 +2305,8 @@ MonoBehaviour:
     attack_damage: 4
     max_health: 15
     movement_range: 6
+    armor: 0
+    promotion_point: 0
     luck: 0
     extra_action: 0
   generalAdaptation: 50
@@ -2496,8 +2506,7 @@ AudioSource:
   m_GameObject: {fileID: 818925262}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243864778437365490, guid: 422e96c8a97da1648a8e6dc63a76880f,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 243864778437365490, guid: 422e96c8a97da1648a8e6dc63a76880f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3087,8 +3096,7 @@ AudioSource:
   m_GameObject: {fileID: 924275250}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3950,8 +3958,7 @@ AudioSource:
   m_GameObject: {fileID: 1529148208}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243864778437365490, guid: 422e96c8a97da1648a8e6dc63a76880f,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 243864778437365490, guid: 422e96c8a97da1648a8e6dc63a76880f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4672,8 +4679,7 @@ AudioSource:
   m_GameObject: {fileID: 1948561949}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 422e96c8a97da1648a8e6dc63a76880f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 936daac0dbcb2be4583203f48937ed21, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

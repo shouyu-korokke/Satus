@@ -29,6 +29,6 @@ public class BackToMain : MonoBehaviour
        
         // animatorFunctions.disableOnce = false;
         yield return new WaitForSeconds(0.6f); // 等待音效播放完毕
-        SceneManager.LoadScene(1); // 加载新场景
+        SceneManager.LoadScene("MainMenu"); // 加载新场景
     }
 }
